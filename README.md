@@ -1,8 +1,46 @@
-#######################################
-Neural Networks for Machine Learning
-Programming Assignment 2
-Learning word representations.
-#######################################
+# Learning Word Representations
+#### Programming Assignment 2 - Neural Networks for Machine Learning (Coursera)
+
+## Training
+In the Octance CLI:
+Load the data for the assignment, and train the network.
+
+```octave
+load data.mat
+[train_x, train_t, valid_x, valid_t, test_x, test_t, vocab] = load_data(100);
+model = train(<number of epochs>);
+```
+
+## A look at the results
+I trained my model for 10 epochs, here are some of the results:
+>Final Training Cross Entropy: **2.415** \
+Final Validation Cross Entropy: **2.587** \
+Final Test Cross Entropy: **2.597**
+
+```
+>> display_nearest_words('day', model, 3)
+
+week 3.63
+year 3.67
+night 3.75
+```
+
+Expected prediction: City of new *york*.
+```
+>> predict_next_word("city", "of", "new", model, 3)
+city of new york Prob: 0.96540
+city of new work Prob: 0.01173
+city of new life Prob: 0.00327
+```
+```
+>> word_distance("he", "she", model)
+ans =  2.0855
+>> word_distance("he", "company", model)
+ans =  4.6665
+```
+
+
+# Assignment Specification
 
 In this assignment, you will design a neural net language model that will
 learn to predict the next word, given previous three words.
